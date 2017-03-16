@@ -1,0 +1,193 @@
+name: twilio
+description: Send SMS to specified number using twilio socket
+
+endpoints:
+  send_sms:
+    description: Send SMS message to given phone number
+    file: scripts/sendSMS.js
+    parameters:
+      from:
+        type: string
+        description: "Phone number from which message will be send"
+        example: "+15005550006"
+      to:
+        type: string
+        description: "Receivers phone number"
+        example: "+15005550006"
+      body:
+        type: string
+        description: "Content of the message"
+        example: "Hello World from twilio socket"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  send_mms:
+    description: Send MMS message to given phone number
+    file: scripts/sendMMS.js
+    parameters:
+      from:
+        type: string
+        description: "Phone number from which message will be send"
+        example: "+15005550006"
+      to:
+        type: string
+        description: "Receivers phone number"
+        example: "+15005550006"
+      body:
+        type: string
+        description: "Content of the message"
+        example: "Hello World from twilio socket"
+      mediaUrl:
+        type: string
+        description: "Url to media content"
+        example: "https://c1.staticflickr.com/3/2899/14341091933_1e92e62d12_b.jpg"
+    response:
+      mimetype: text/plain
+      examples:
+        -
+          exit_code: 200
+          description: Success
+          example: "MMS to +15005550006 was send. Current status: queued."
+        -
+          exit_code: 400
+          description: Failed
+          example: "The 'To' number +15005550001 is not a valid phone number."
+  get_message:
+    description: Get message details with given SID
+    file: scripts/getMessage.js
+    parameters:
+      message_sid:
+        type: string
+        description: "SID of message you want retrive"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  list_messages:
+    description: Display all messages with they details
+    file: scripts/listMessages.js
+    parameters:
+      dummy:
+        type: string
+        description: Just dummy parameter to call list, ignore it
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  call:
+    description: Make a call to given phone number
+    file: scripts/call.js
+    parameters:
+      from:
+        type: string
+        description: "Phone number from which call will be executed"
+        example: "+15005550006"
+      to:
+        type: string
+        description: "Receivers phone number"
+        example: "+15005550006"
+      url:
+        type: string
+        description: "The fully qualified URL that should be consulted when the call connects."
+        example: http://demo.twilio.com/docs/voice.xml
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  create_queue:
+    description: Create call queue
+    file: scripts/createQueue.js
+    parameters:
+      name:
+        type: string
+        description: "Friendly name for call queue"
+        example: "newqueue"
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  get_queue:
+    description: Get queue information by SID
+    file: scripts/getQueue.js
+    parameters:
+      sid:
+        type: string
+        description: Queue SID that you want to get
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  update_queue:
+    description: Update given queue by changing FriendlyName or MaxSize
+    file: scripts/updateQueue.js
+    parameters:
+      sid:
+        type: string
+        description: Queue sid number
+      name:
+        type: string
+        description: Queue friendly name
+      size:
+        type: string
+        description: Queue max size
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+  list_queues:
+    description: Display all available queues
+    file: scripts/listQueues.js
+    parameters:
+      dummy:
+        type: string
+        description: Just dummy parameter to call list, ignore it
+    response:
+      mimetype: application/json
+      examples:
+        -
+          exit_code: 200
+          description: Success
+        -
+          exit_code: 400
+          description: Failed
+config:
+  accountSid:
+    value: <Twilio Account Sid>
+  accountToken:
+    value: <Twilio Account Token>

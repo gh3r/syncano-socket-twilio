@@ -1,0 +1,21 @@
+{
+  "name": "twilio",
+  "description": "Syncano twilio socket for sending sms",
+  "version": "0.0.2",
+  "author": "Marcin Godlewski",
+  "licenses": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gh3r/syncano-socket-twilio"
+  },
+  "bugs": {
+    "url": "https://github.com/gh3r/syncano-socket-twilio/issues"
+  },
+  "dependencies": {
+    "twilio": "2.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": ""
+  }
+}
