@@ -1,5 +1,8 @@
 name: twilio
+version: 0.0.3
 description: Send SMS to specified number using twilio socket
+author:
+  name: Marcin Godlewski
 
 endpoints:
   send_sms:
